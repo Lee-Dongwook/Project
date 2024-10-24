@@ -1,11 +1,9 @@
 import signIn from '@/src/auth';
 
-interface AuthenticateProps {
-  prevState?: string;
-  formData: FormData;
-}
-
-export const authenticate = async ({ formData }: AuthenticateProps) => {
+export const authenticate = async (
+  prevState: string | undefined,
+  formData: FormData,
+) => {
   try {
     await signIn('credentials', Object.fromEntries(formData));
   } catch (error) {
