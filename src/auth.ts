@@ -3,7 +3,7 @@ import Credentials from 'next-auth/providers/credentials';
 import { authConfig } from './authConfig';
 import { z } from 'zod';
 import { sql } from '@vercel/postgres';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 type User = {
   id: string;

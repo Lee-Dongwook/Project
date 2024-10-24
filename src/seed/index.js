@@ -1,6 +1,6 @@
 import db from '@vercel/postgres';
 import { invoices, customers, revenue, users } from '../lib/sampleData';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 const seedUsers = async (client) => {
   try {
