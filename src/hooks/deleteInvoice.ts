@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache';
 import { sql } from '@vercel/postgres';
 
-interface DeleteInvoiceProps {
+export interface DeleteInvoiceProps {
   id: string;
 }
 

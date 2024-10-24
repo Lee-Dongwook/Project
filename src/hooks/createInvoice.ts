@@ -11,10 +11,10 @@ interface CreateInvoiceProps {
   formData: FormData;
 }
 
-const CreateInvoice = FormSchema.omit({ id: true, date: true });
+const CreateInvoiceSchema = FormSchema.omit({ id: true, date: true });
 
 export const createInvoice = async ({ formData }: CreateInvoiceProps) => {
-  const validatedFields = CreateInvoice.safeParse({
+  const validatedFields = CreateInvoiceSchema.safeParse({
     customerId: formData.get('customerId'),
     amount: formData.get('amount'),
     status: formData.get('status'),
