@@ -9,20 +9,20 @@ import { FormSchema } from '@/src/lib/formSchema';
 interface UpdateInvoiceProps {
   id: string;
   prevState?: State;
-  formData: FormData;
+  formData?: FormData;
 }
 
-const UpdateInvoice = FormSchema.omit({ id: true, date: true });
+const UpdateInvoiceSchema = FormSchema.omit({ id: true, date: true });
 
 export const updateInvoice = async ({
   id,
   prevState,
   formData,
 }: UpdateInvoiceProps) => {
-  const validateFields = UpdateInvoice.safeParse({
-    customerId: formData.get('customerId'),
-    amount: formData.get('amount'),
-    status: formData.get('status'),
+  const validateFields = UpdateInvoiceSchema.safeParse({
+    customerId: formData?.get('customerId'),
+    amount: formData?.get('amount'),
+    status: formData?.get('status'),
   });
 
   if (!validateFields.success) {
