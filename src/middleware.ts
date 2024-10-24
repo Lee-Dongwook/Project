@@ -1,8 +1,20 @@
-import NextAuth from 'next-auth';
-import { authConfig } from './auth.config';
+import { withAuth } from 'next-auth/middleware';
 
-export default NextAuth(authConfig).auth;
+export default withAuth({
+  callbacks: {
+    authorized({ token, req }) {
+      const isLoggedIn = !!token;
+      const isOnDashboard = req.nextUrl.pathname.startsWith('/dashboard/');
+
+      if (isOnDashboard && !isLoggedIn) {
+        return false;
+      }
+
+      return true;
+    },
+  },
+});
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
+  matcher: ['/dashboard/:path*'],
 };
