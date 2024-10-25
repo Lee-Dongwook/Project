@@ -1,0 +1,1 @@
+import { Metadata } from 'next';
