@@ -1,5 +1,6 @@
-import db from '@vercel/postgres';
-import { invoices, customers, revenue, users } from '../lib/sampleData';
+// import * as db from '@vercel/postgres';
+import { createClient } from '@vercel/postgres';
+import { invoices, customers, revenue, users } from '../lib/sampleData.js';
 import bcrypt from 'bcryptjs';
 
 const seedUsers = async (client) => {
@@ -152,7 +153,7 @@ const seedRevenue = async (client) => {
 };
 
 const main = async () => {
-  const client = await db.connect();
+  const client = createClient();
 
   try {
     await seedUsers(client);
