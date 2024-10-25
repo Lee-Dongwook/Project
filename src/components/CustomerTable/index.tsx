@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import { lusitana } from '@/src/assets/font/font';
 import { Search } from '@/src/components/Search';
-import type { CustomersTable, FormattedCustomersTable } from '@/src/types';
+import type { FormattedCustomersTable } from '@/src/types';
 
-export default async function CustomersTable({
-  customers,
-}: {
+interface CustomerTableProps {
   customers: FormattedCustomersTable[];
-}) {
+}
+
+export const CustomerTable = async ({ customers }: CustomerTableProps) => {
   return (
     <div className="w-full">
       <h1 className={`${lusitana.className} mb-8 text-xl md:text-2xl`}>
@@ -117,4 +117,4 @@ export default async function CustomersTable({
       </div>
     </div>
   );
-}
+};
